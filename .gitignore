@@ -1,0 +1,31 @@
+__pycache__/
+*.pyc
+*.onnx
+*.pth
+!test/esr_tiny_*.pth
+*.safetensors
+gpu_test.log
+error.log
+*.part
+test/*.dds
+out14/
+
+# SuperMat: portable Python, PyTorch and weights are installed locally
+supermat_env/
+
+# local working folders of the author, not part of the program
+_старое*/
+Для GitHub/
+_бэкап/
+DOCS_TASK.md
+FEATURES_TASK.md
+GITHUB_HANDOFF.md
+REVIEW.md
+
+# superseded SuperMat installers (install_supermat_portable.bat is the one)
+install_supermat.bat
+install_supermat_final.bat
+install_supermat_fixed.bat
+install_supermat_nogit.bat
+install_supermat_python.bat
+extract_supermat.bat

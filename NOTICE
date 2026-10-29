@@ -1,0 +1,80 @@
+Texelith
+Copyright (c) 2026 The Texelith contributors
+Licensed under the MIT License (see LICENSE).
+
+This software does not bundle any third-party code or model weights. The
+components below are installed or downloaded separately at the user's request
+and remain under their own licences.
+
+Python packages (installed with pip)
+------------------------------------
+numpy, scipy, scikit-image ....... BSD 3-Clause
+Pillow ........................... MIT-CMU (HPND)
+tkinterdnd2 (optional) ........... MIT
+onnxruntime (optional) ........... MIT
+onnx (optional, ESRGAN only) ..... Apache License 2.0
+quicktex (optional, DDS) ......... Apache License 2.0
+CuPy (optional, graphics card) ... MIT; the NVIDIA CUDA libraries it
+                                   installs are under NVIDIA's own licence
+
+Neural network models (downloaded on demand into ~/.texelith/models)
+-------------------------------------------------------------------
+MiDaS v2.1 Small
+  Intel Intelligent Systems Lab — https://github.com/isl-org/MiDaS
+  Ranftl et al., "Towards Robust Monocular Depth Estimation: Mixing Datasets
+  for Zero-shot Cross-dataset Transfer".
+  Licence: MIT.
+
+Depth Anything V2 Small
+  Yang et al., "Depth Anything V2", 2024 —
+  https://github.com/DepthAnything/Depth-Anything-V2
+  ONNX export: https://github.com/fabio-sim/Depth-Anything-ONNX
+  Licence: Apache License 2.0 (the Small model; larger variants are
+  CC-BY-NC-4.0 and are not used).
+
+1x NormalMapGenerator-CX-Lite
+1x FrankenMapGenerator-CX-Lite
+  Author: Joey (JoeyBallentine) —
+  https://github.com/joeyballentine/Material-Map-Generator
+  https://openmodeldb.info/models/1x-NormalMapGenerator-CX-Lite
+  https://openmodeldb.info/models/1x-FrankenMapGenerator-CX-Lite
+  Architecture: ESRGAN (Wang et al., 2018).
+  Licence: Creative Commons Attribution-NonCommercial-ShareAlike 4.0.
+  NON-COMMERCIAL USE ONLY. Texelith reads these weights and converts them to
+  ONNX locally on the user's machine; the converted file is a derivative and
+  stays under the same licence.
+
+DeepBump
+  Hugo Tini — https://github.com/HugoTini/DeepBump
+  Model file deepbump256.onnx, downloaded from that repository.
+  Licence: GNU General Public License v3.0. Texelith only downloads and runs
+  the model file; no DeepBump code is included (the tiling on the torus is
+  Texelith's own).
+
+SuperMat (not downloaded by Texelith)
+  Hong et al., "SuperMat: Physically Consistent PBR Material Estimation at
+  Interactive Rates", ICCV 2025.
+  Code: https://github.com/hyj542682306/SuperMat — weights:
+  https://huggingface.co/oyiya/SuperMat. Licence: MIT.
+  Its base model, Stable Diffusion 2.1, is under the CreativeML Open RAIL++-M
+  licence and is downloaded by the SuperMat code on first use.
+  Installed by the user with install_supermat_portable.bat into its own
+  portable Python environment (supermat_env/); Texelith starts it as a
+  separate process through supermat_worker.py and includes none of its code
+  or weights.
+
+Sample textures (samples/)
+--------------------------
+Rock064, Bricks105, PavingStones151, WoodFloor051, Metal063 — ambientCG
+(https://ambientcg.com), CC0 1.0 Universal. Copied from
+https://github.com/amazingsammed/mini_textures, which bundles them under CC0.
+
+Other references
+----------------
+Reoriented normal mapping: Barré-Brisebois & Hill, "Blending in Detail", 2012.
+OpenMW specular map layout (RGB colour, alpha × 255 = shininess) from
+files/shaders/compatibility/objects.frag.
+OpenMW parallax formula and normal-map conventions are taken from the OpenMW
+documentation and shader sources (files/shaders/lib/material/parallax.glsl);
+no OpenMW code is included. Game unit size (22.1 units per foot) as documented
+by MWSE.
